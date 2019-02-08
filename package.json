@@ -1,0 +1,25 @@
+{
+  "name": "berryorm",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cranberry-team/berryorm.git"
+  },
+  "author": "mrfrac",
+  "license": "MIT",
+  "tags": [
+    "orm",
+    "database",
+    "knex"
+  ],
+  "private": true,
+  "devDependencies": {
+    "knex": "^0.16.3",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.3.3"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
+}
