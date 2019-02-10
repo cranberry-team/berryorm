@@ -1,6 +1,8 @@
 import { Model, Table, Field } from "../src";
 
-@Table()
+@Table({
+    name: "someTableName"
+})
 class TestOne extends Model {
     @Field() public oneColumn1: number;
     @Field() public oneColumn2: string;
@@ -24,5 +26,10 @@ describe("Base Model Testing", () => {
     test("Meta testing", () => {
         expect(testOne.getMeta().target).toBe(testOne.constructor);
         expect(testTwo.getMeta().target).toBe(testTwo.constructor);
+    });
+
+    test("Filter testing: table name", () => {
+        expect(testOne.objects.filter().indexOf("someTableName")).toBeGreaterThan(0);
+        expect(testTwo.objects.filter().indexOf("TestTwo")).toBeGreaterThan(0);
     });
 });
