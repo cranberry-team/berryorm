@@ -1,7 +1,7 @@
 import { Model, Table, Field } from "../src";
 
 @Table({
-    name: "someTableName"
+    dbName: "someTableName"
 })
 class TestOne extends Model {
     @Field() public oneColumn1: number;

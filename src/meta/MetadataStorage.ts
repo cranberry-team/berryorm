@@ -1,4 +1,5 @@
 import ColumnMeta from "./ColumnMeta";
+import ModelMeta from "./ModelMeta";
 
 declare var global: any;
 
@@ -7,7 +8,7 @@ declare var global: any;
  * @todo возможно, запилить класс статикой со всем функционалом (get/set и тп)
  */
 export default class MetadataStorage {
-    public tables: any[] = [];
+    public tables: ModelMeta[] = [];
     public columns: ColumnMeta[] = [];
 
     static getStorage() {
