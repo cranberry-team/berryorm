@@ -1,4 +1,4 @@
-import { getMetadataStorage } from "../tools";
+import MetadataStorage from "../meta/MetadataStorage";
 
 export interface ITableParams {
     name?: string;
@@ -7,7 +7,7 @@ export interface ITableParams {
 export function Table(params?: ITableParams) {
     return function(target: Function) {
         const tableName = params && params.name ? params.name : target.name;
-        getMetadataStorage().tables.push({
+        MetadataStorage.getStorage().tables.push({
             target,
             name: tableName
         });

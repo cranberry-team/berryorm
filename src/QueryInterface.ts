@@ -11,6 +11,6 @@ export class QueryInterface {
     }
 
     filter() {
-        return `SELECT ${this._columns.map(col => col.name).join(", ")} FROM ${this._meta.name}`
+        return `SELECT ${this._columns.map(col => col.dbName).join(", ")} FROM ${this._meta.name}`
     }
 }

@@ -10,7 +10,7 @@ class TestOne extends Model {
 
 @Table()
 class TestTwo extends Model {
-    @Field() public twoColumn1: number;
+    @Field({ dbName: "dbNameTwoColumn" }) public twoColumn1: number;
     @Field() public twoColumn2: string;
 }
 
@@ -31,5 +31,9 @@ describe("Base Model Testing", () => {
     test("Filter testing: table name", () => {
         expect(testOne.objects.filter().indexOf("someTableName")).toBeGreaterThan(0);
         expect(testTwo.objects.filter().indexOf("TestTwo")).toBeGreaterThan(0);
+    });
+
+    test("Filter testing: custom column name", () => {
+        expect(testTwo.objects.filter().indexOf("dbNameTwoColumn")).toBeGreaterThan(0);
     });
 });

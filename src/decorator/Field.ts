@@ -1,13 +1,12 @@
-import { getMetadataStorage } from "../tools";
+import ColumnMeta from "../meta/ColumnMeta";
+import MetadataStorage from "../meta/MetadataStorage";
 
-/**
- * @todo понять, какие параметры для филда нужны (тип данных (посмотреть в knex), `name` для колонки, и т.п.)
- */
-export function Field() {
+export interface IFieldParams {
+    dbName?: string;
+}
+
+export function Field(params: IFieldParams = {}) {
     return function (object: Object, propertyName: string) {
-        getMetadataStorage().columns.push({
-            target: object.constructor,
-            name: propertyName
-        });
+        MetadataStorage.getStorage().columns.push(new ColumnMeta(object.constructor, propertyName, params.dbName));
     }
 }
