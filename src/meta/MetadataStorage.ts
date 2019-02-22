@@ -4,14 +4,13 @@ import ModelMeta from "./ModelMeta";
 declare var global: any;
 
 /**
- * @todo Запилить общий мета-объект для таблицы с ее колонками
- * @todo возможно, запилить класс статикой со всем функционалом (get/set и тп)
+ * @todo Возможно, замутить тут честный singleton чтобы было проще
  */
 export default class MetadataStorage {
     public tables: ModelMeta[] = [];
     public columns: ColumnMeta[] = [];
 
-    static getStorage() {
+    static getStorage(): MetadataStorage {
         const globalStorage = global;
         if (!globalStorage.berryorm) {
             globalStorage.berryorm = new MetadataStorage();
