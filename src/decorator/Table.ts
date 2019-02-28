@@ -1,15 +1,13 @@
-import { getMetadataStorage } from "../tools";
+import MetadataStorage from "../meta/MetadataStorage";
+import ModelMeta from "../meta/ModelMeta";
 
 export interface ITableParams {
-    name?: string;
+    dbName?: string;
 }
 
-export function Table(params?: ITableParams) {
+export function Table(params: ITableParams = {}) {
     return function(target: Function) {
-        const tableName = params && params.name ? params.name : target.name;
-        getMetadataStorage().tables.push({
-            target,
-            name: tableName
-        });
+        const tableName = params && params.dbName ? params.dbName : target.name;
+        MetadataStorage.getStorage().tables.push(new ModelMeta(target, tableName, params.dbName));
     }
 }
