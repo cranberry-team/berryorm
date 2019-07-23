@@ -5,7 +5,7 @@ import { Connection } from "../src/connection/Connection";
 describe("Connection testing", () => {
     let connectionManager: ConnectionManager;
     const connectionMock: Config = {
-        dialect: "someDialect",
+        dialect: "someDialect1",
     };
 
     beforeEach(() => {
